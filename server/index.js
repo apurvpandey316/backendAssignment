@@ -29,4 +29,4 @@ app.get("/all", statusAll);
 
 app.get("/available", getAvailableSeats);
 app.post("/bookSeat", seatBooking);
-app.listen(8080, () => console.log(`server running at port 8080`));
+app.listen(8080);

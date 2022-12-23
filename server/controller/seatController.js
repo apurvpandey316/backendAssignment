@@ -26,7 +26,6 @@ const seatBooking = (req, res) => {
           }
         })
       );
-      console.log(occupied);
 
       //occupied.length > 0, no seats will be booked
       if (occupied.length)
@@ -68,23 +67,33 @@ const getAvailableSeats = async (req, res) => {
 
 //inserting 500 seats in the database which can be booked
 const populateDatabase = async (req, res) => {
-  const seats = [];
-  for (var i = 1; i <= 500; i++) {
-    var seat = new Seat({
-      seatNumber: i,
+  try {
+    const seats = [];
+    for (var i = 1; i <= 500; i++) {
+      var seat = new Seat({
+        seatNumber: i,
+      });
+      seat = await seat.save();
+      seats.push(seat);
+    }
+    res.status(201).json({
+      seats,
     });
-    seat = await seat.save();
-    seats.push(seat);
+  } catch (error) {
+    console.log(error.message);
+    res.send(error.message);
   }
-  res.status(201).json({
-    seats,
-  });
 };
 
 //tells about each seat, booked or unbooked, name of the person booking
 const statusAll = async (req, res) => {
-  const seats = await Seat.find({});
-  res.status(200).json(seats);
+  try {
+    const seats = await Seat.find({});
+    res.status(200).json(seats);
+  } catch (error) {
+    console.log(error.message);
+    res.send(error.message);
+  }
 };
 module.exports = {
   getAvailableSeats,

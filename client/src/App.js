@@ -11,6 +11,8 @@ function App() {
   const getAvailableSeats = async () => {
     const availableSeats = await axios.get("/available");
     setAvailableSeats(availableSeats.data.availableseats);
+    if (availableSeats.length === 0)
+      return alert("Sorry!, No seats available now");
     setFetchSeats(true);
   };
   const toggleSeat = (e) => {
@@ -32,7 +34,6 @@ function App() {
         name,
         seats: selectedSeats,
       });
-      console.log(res.data);
       alert(`${res.data.message} ${res.data.seats}`);
     } catch (error) {
       if (error.response && error.response.status == 403) {
