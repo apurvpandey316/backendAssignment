@@ -51,6 +51,7 @@ function App() {
         backgroundColor: "skyblue",
         display: "flex",
         flexDirection: "column",
+        alignItems: "center",
       }}
     >
       <button
@@ -61,11 +62,11 @@ function App() {
           padding: "1rem",
           width: "30vw",
           cursor: "pointer",
-          fontWeight: "bold",
+          fontWeight: "600",
           borderRadius: "1rem",
           border: "none",
           fontSize: "1rem",
-          backgroundColor: "green",
+          backgroundColor: "#5F8D4E",
         }}
       >
         Get available seats
@@ -77,6 +78,7 @@ function App() {
               display: "grid",
               gap: "0.175rem",
               margin: "1rem",
+              width: "80vw",
               gridTemplateColumns: "repeat(25,1fr)",
             }}
           >
@@ -123,11 +125,11 @@ function App() {
                 padding: "1rem",
                 width: "30vw",
                 cursor: "pointer",
-                fontWeight: "bold",
+                fontWeight: "600",
                 borderRadius: "1rem",
                 border: "none",
                 fontSize: "1rem",
-                backgroundColor: "green",
+                backgroundColor: "#5F8D4E",
               }}
             >
               BookSeats
